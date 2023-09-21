@@ -37,4 +37,51 @@
  * * add the event listener to the container, pass the callback.
  */
 
-// Your code goes here...
+// Your code goes here..
+
+function setRedBackgroundForFavorites() {
+  const favoriteItems = JSON.parse(localStorage.getItem('favorites')) || [];
+  const cardsContainer = document.querySelector('.cardsContainer');
+
+  favoriteItems.forEach(itemId => {
+    const card = document.getElementById(itemId);
+    if (card) {
+      card.style.backgroundColor = 'red';
+    }
+  });
+}
+
+function addToFavorites(itemId) {
+  const favoriteItems = JSON.parse(localStorage.getItem('favorites')) || [];
+  favoriteItems.push(itemId);
+  localStorage.setItem('favorites', JSON.stringify(favoriteItems));
+}
+
+function removeFromFavorites(itemId) {
+  const favoriteItems = JSON.parse(localStorage.getItem('favorites')) || [];
+  const updatedFavorites = favoriteItems.filter(id => id !== itemId);
+  localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+}
+
+// Callback function for click event
+function handleItemClick(event) {
+  const clickedCard = event.target;
+  const itemId = clickedCard.id;
+
+  if (!itemId) return;
+
+  const isFavorite = clickedCard.style.backgroundColor === 'red';
+
+  if (isFavorite) {
+    clickedCard.style.backgroundColor = 'white';
+    removeFromFavorites(itemId);
+  } else {
+    clickedCard.style.backgroundColor = 'red';
+    addToFavorites(itemId);
+  }
+}
+
+const cardsContainer = document.querySelector('.cardsContainer');
+cardsContainer.addEventListener('click', handleItemClick);
+
+setRedBackgroundForFavorites();
