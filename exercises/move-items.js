@@ -13,7 +13,7 @@
 
 // Your code goes here...
 
-
+const listItems = document.querySelectorAll(".item");
 
 /**
  * @task
@@ -24,7 +24,7 @@
 
 // Your code goes here
 
-
+const container = document.getElementById("main")
 
 /**
  * @task
@@ -35,20 +35,31 @@
 
 // Your code goes here
 
-
+const favorites = document.getElementById("favs")
 
 /**
  * @task
  * Create the updateCollections(id, direction) function that follows the list of requirements:
- * Takes an argument of the item id (number)
+ * Take an argument of the item id (number)
  * Take an argument of direction as a string value of 'toMain' or 'toFavs'
- * Moves the element from the current parent to the new parent (from main to favs or vice versa)
- * Changes the icon of the element: fa-heart-circle-plus for main, fa-heart-crack for favs items.
+ * Move the element from the current parent to the new parent (from main to favs or vice versa)
+ * Change the icon of the element: fa-heart-circle-plus for main, fa-heart-crack for favs items.
  */
 
 // Your code goes here
 
-
+const updateCollections = (id, direction) => {
+ const item = document.getElementById(id);
+ if (!item) return;
+ 
+ if (direction === 'toMain') {
+  item.querySelector('i').classList = 'fa-solid fa-heart-circle-plus';
+  container.appendChild(item);
+ } else if (direction === 'toFavs') {
+  item.querySelector('i').classList = 'fa-solid fa-heart-crack';
+  favorites.appendChild(item);
+ }
+};
 
 /**
  * @task
@@ -66,4 +77,12 @@
 
 // Your code goes here...
 
+listItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const parentId = item.parentElement.id;
+    const itemId = item.id;
+    const direction = parentId === 'main' ? 'toFavs' : 'toMain';
 
+    updateCollections(itemId, direction);
+  });
+});

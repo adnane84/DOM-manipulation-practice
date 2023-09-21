@@ -76,4 +76,3 @@ sortBtn.forEach((button) => {
     sortData(direction)
   });
 });
-
