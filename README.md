@@ -22,19 +22,3 @@
   * local-storage 
 - The grading mentor will download your assignment, then start the live server and check if everything works as shown in the INTRO video. The mentor also makes sure that no files have changed except for the files in the exercise folder.
 - **!!! Nothing is restricted to be used (loops, applicatives, any other methods). The only thing the mentor pays attention to if everything works as shown in the video and the exercise files' code follows all the requirements listed**
-
-### CAUTION
-Please, do **NOT** change or update:
-
-- Functions' arguments or their names. Use exactly the name used in examples.
-- Lines of code that are asked NOT to change or delete.
-- Commented out lines of text that initially were in the files.
-- Files in the css folder.
-- Files in the pages folder.
-- Files in the exercises-info folder.
-
-You can only write your code in the "Your code goes here..." placeholder in each exercise file of the **exercises** folder.
-
-Changing the files listed above may cause NOT meeting all the acceptance criteria.
-You can add/commit any repo changes any time you want, but if you haven't added, committed any changes you can always 
-restore those file's initial state with ```git restore <fileName>``` command.
